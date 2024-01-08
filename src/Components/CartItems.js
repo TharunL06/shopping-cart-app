@@ -1,11 +1,12 @@
 // CartItems.js
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { ItemContext } from '../Context/ItemContext';
 import './CartItems.css'; // Import CSS file
 
 const CartItems = () => {
   const { cartItems,removeFromCart,removeAllItems } = useContext(ItemContext);
+  const [orderPlaced, setorderPlaced] = useState(false)
 
   // Calculating total price
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -20,6 +21,7 @@ const CartItems = () => {
 
   const handlePlaceOrder = () => {
     console.log("Order Placed! Implement your place order logic here.");
+    setorderPlaced(true);
   };
 
   return (
@@ -36,6 +38,7 @@ const CartItems = () => {
         ))}
       </ul>
       <p className="total-price">Total Price: ${totalPrice}</p>
+      {orderPlaced && <p className="order-placed-message">Order Placed! Thank you for shopping with us.</p>}
       <div className="cart-actions">
         <button onClick={handleRemoveAllItems} className="remove-all-btn">
           Remove All Items

@@ -58,3 +58,9 @@
   .place-order-btn:hover {
     background-color: #0056b3;
   }  
+
+.order-placed-message{
+  background-color: #1bc740;
+  text-align: center;
+  font-weight: larger;
+}
